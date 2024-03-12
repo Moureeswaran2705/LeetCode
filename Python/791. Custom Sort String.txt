@@ -1,0 +1,11 @@
+class Solution:
+    def customSortString(self, order: str, s: str) -> str:
+        sc=collections.Counter(s)
+        sb=[]
+        for x in order:
+            if x in sc:
+                sb.extend([x]*sc[x])
+                del sc[x]
+        for x,c in sc.items():
+            sb.extend([x]*c)
+        return "".join(sb)
