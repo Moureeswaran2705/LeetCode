@@ -1,0 +1,17 @@
+class Solution:
+    def DFS(self, arr, i, j):
+        if i < 0 or j < 0 or i >= len(arr) or j >= len(arr[0]) or arr[i][j] == '0':
+            return
+        arr[i][j] = '0'
+        self.DFS(arr, i + 1, j)
+        self.DFS(arr, i - 1, j)
+        self.DFS(arr, i, j + 1)
+        self.DFS(arr, i, j - 1)
+    def numIslands(self, grid: List[List[str]]) -> int:
+        count = 0
+        for i in range(len(grid)):
+            for j in range(len(grid[i])):
+                if grid[i][j] == '1':
+                    count += 1
+                    self.DFS(grid, i, j)
+        return count
