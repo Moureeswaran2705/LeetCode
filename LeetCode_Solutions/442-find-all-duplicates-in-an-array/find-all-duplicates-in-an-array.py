@@ -1,7 +1,7 @@
 class Solution:
     def findDuplicates(self, nums: List[int]) -> List[int]:
         s=set()
-        D=[False]*max(nums)*1000
+        D=[False]*(len(nums)+1)
         for num in nums:
             if D[num]:
                 s.add(num)
