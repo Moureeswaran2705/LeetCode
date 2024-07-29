@@ -1,30 +1,23 @@
 class Solution {
-    public int numTeams(int[] ratings) {
-       // List<List<Integer>> lt=new ArrayList<>();
-       int ans=0;
-        for(int i=1;i<ratings.length-1;i++){
-            int leftLess=0;
-            int leftGreat=0;
-            for(int j=0;j<i;j++){
-                if(ratings[i]>ratings[j]){
-                    leftLess++;
-                }
-                else{
-                    leftGreat++;
-                }
-            }
-            int rightLess=0;
-            int rightGreat=0;
-            for(int j=i+1;j<ratings.length;j++){
-                if(ratings[j]>ratings[i]){
-                    rightGreat++;
-                }
-                else{
-                     rightLess++;
-                }
-            }
-            ans+=leftLess*rightGreat+rightLess*leftGreat;
-        }
-        return ans;
+    public int numTeams(int[] rating) {
+        
+        int c = 0 ;
+
+        for (int i = 0 ; i< rating.length-2 ; i++)
+            for (int j = i+1 ; j<rating.length-1;j++)
+                if (rating[j] < rating[i])
+                    for (int k = j+1 ; k<rating.length ; k++)
+                        if (rating[k] < rating[j])
+                            c++;
+              
+    
+        for (int i = 0 ; i< rating.length-2 ; i++)
+            for (int j = i+1 ; j<rating.length-1;j++)
+                if (rating[j] > rating[i])
+                    for (int k = j+1 ; k<rating.length ; k++)
+                        if (rating[k] > rating[j])
+                            c++;
+    
+    return c;
     }
 }
